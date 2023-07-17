@@ -1,0 +1,90 @@
+<%- include("partials/_header") %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-5">
+        <form method="POST" action="/buscar" class="w-100 me-3" role="search">
+            <input style="border-radius: 10px; margin-top: 30%;" name="busqueda" type="search" class="form-control" placeholder="Buscar elemento..." aria-label="buscador">
+            <button style="border-radius: 10%; margin-left: 110%; margin-top: -15%;"class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+        </div>
+        <div class="col-md-6">
+            <div style="margin-left: 150px; margin-bottom: 20px; border-radius: 15%;" class="card">
+                <div class="card-body">
+                    <form action= "/inicio/add" method="post">
+                        <div>
+                            <h2>Formulario</h2>
+                        </div>
+                        <div class =" form-group">
+                            <input type="text" name="placas" placeholder="Placas transporte" class="form-control">
+                        </div>
+                        <div class =" form-group">
+                            <input type="text" name="origen" placeholder="Lugar de origen" class="form-control">
+                        </div>
+                        <div class =" form-group">
+                            <input type="text" name="variedad" placeholder="Variedad" class="form-control">
+                        </div>
+                        <div class =" form-group">
+                            <input type="text" name="productor" placeholder="Productor" class="form-control">
+                        </div>
+                        <button type="submit" class=" btn md-5 btn-primary ">GUARDAR</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 50px;" class="col-md-8">
+            <table class="table table-dark table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <td>n°</td>
+                    <td>Placas transporte</td>
+                    <td>lugar de origen</td>
+                    <td>Variedad</td>
+                    <td>Productor</td>
+                    <td>Fecha</td>
+                    <td>Hora</td>
+                    <td>Acciones</td>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% if(data) { %>
+                        <% for(var i = 0; i < data.length; i++ ) { %>
+                            <tr>
+                                <td>
+                                    <%= (1+i)%>
+                                </td>
+                                <td>
+                                    <%= (data[i].placas)%>
+                                </td>
+                                <td>
+                                    <%= (data[i].origen)%>
+                                </td>
+                                <td>
+                                    <%= (data[i].variedad)%>
+                                </td>
+                                <td>
+                                    <%= (data[i].productor)%>
+                                </td>
+                                <td>
+                                    <%= (data[i].fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }) )%>
+                                    
+                                </td>
+                                <td>
+                                    <%= (data[i].hora) %>
+                                </td>
+                                <td class="col-mt-2">
+                                    <a style="margin-bottom: 5%; margin-left: 8%;" href="/inicio/deletes/<%= data[i].id%>" class="btn btn-danger">Eliminar</a>
+                                    <a href="/inicio/updates/<%= data[i].id%>" class="btn btn-primary">Actualizar</a>
+                                </td>
+                                
+                            </tr>
+                            
+                            <% }%>
+                    <% }%>
+                </tbody>
+              </table>
+        
+    </div>
+</div>
+
+<%- include("partials/_footer") %>

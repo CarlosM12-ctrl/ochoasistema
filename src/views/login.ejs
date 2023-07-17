@@ -1,0 +1,33 @@
+<%- include("partials/_headerlog") %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-5">
+            <h2>TEXTO INFORMATIVO</h2>
+        </div>
+        <div class="col-md-6">
+            <div style="margin-left: 200px; margin-right: 50px; margin-top: 50px; border-radius: 15%;" class="card">
+                <div class="card-body">
+                    <form action= "/" method="post">
+                        <div>
+                            <h2>Inicia Sesión</h2>
+                        </div>
+                        <div class =" form-group">
+                            <input type="text" name="user" placeholder="Usuario" class="form-control">
+                        </div>
+                        <div class =" form-group">
+                            <input type="password" name="psw" placeholder="Contraseña" class="form-control">
+                        </div>
+                        <button type="submit" class=" btn md-5 btn-primary ">Iniciar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 50px;" class="col-md-8">
+            
+        </div>
+        
+    </div>
+</div>
+
+<%- include("partials/_footer") %>

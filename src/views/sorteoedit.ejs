@@ -1,0 +1,44 @@
+<%- include("partials/_header") %>
+
+<div style="align-items: center; margin-left: 200px;" class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <form action="/sorteo/update/<%= data.id %>" method="POST">
+          <input
+            type="text"
+            name="folio"
+            value="<%= data.folio %>"
+            placeholder="Folio de tarima"
+            class="form-control mb-3"
+          />
+          <input
+            type="text"
+            name="gm"
+            value="<%= data.gm %>"
+            placeholder="Grados de maduración"
+            class="form-control mb-3"
+          />
+          <input
+            type="text"
+            name="gb"
+            value="<%= data.gb %>"
+            placeholder="Grados Brix"
+            class="form-control mb-3"
+          />
+          <input
+          type="text"
+          name="cajas"
+          value="<%= data.cajas %>"
+          placeholder="Cantidad de cajas"
+          class="form-control mb-3"
+          />
+        
+          <button style="margin-left: 135px;" type="submit" class="btn btn-primary">¡GUARDAR!</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/_footer") %>

@@ -1,0 +1,86 @@
+<%- include("partials/_header") %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-5">
+        <form method="POST" action="/sorteo/buscarsor" class="w-100 me-3" role="search">
+            <input style="border-radius: 10px; margin-top: 30%;" name="busqueda" type="search" class="form-control" placeholder="Buscar elemento..." aria-label="buscador">
+            <button style="border-radius: 10%; margin-left: 110%; margin-top: -15%;"class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+        </div>
+        <div class="col-md-6">
+            <div style="margin-left: 150px; margin-bottom: 20px; border-radius: 15%;" class="card">
+                <div class="card-body">
+                    <form action= "/sorteo/adds" method="post">
+                        <div>
+                            <h2>Formulario</h2>
+                        </div>
+                        <div class =" form-group">
+                            <input type="text" name="folio" placeholder="Folio de tarima " class="form-control">
+                        </div>
+                        <div class =" form-group">
+                            <input type="text" name="gm" placeholder="Grados de Maduración" class="form-control">
+                        </div>
+                        <div class =" form-group">
+                            <input type="text" name="gb" placeholder="Grados Brix" class="form-control">
+                        </div>
+                        <div class =" form-group">
+                            <input type="text" name="cajas" placeholder="Cantidad de cajas" class="form-control">
+                        </div>
+                        <button type="submit" class=" btn md-5 btn-primary ">GUARDAR</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 50px;" class="col-md-8">
+            <table class="table table-dark table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <td>n°</td>
+                    <td>Folio tarima</td>
+                    <td>Grado de maduración</td>
+                    <td>Grados Brix</td>
+                    <td>Cantidad de cajas</td>
+                    <td>Hora ingreso</td>
+                    <td>Acciones</td>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% if(data) { %>
+                        <% for(var i = 0; i < data.length; i++ ) { %>
+                            <tr>
+                                <td>
+                                    <%= (1+i)%>
+                                </td>
+                                <td>
+                                    <%= (data[i].folio)%>
+                                </td>
+                                <td>
+                                    <%= (data[i].gm)%>
+                                </td>
+                                <td>
+                                    <%= (data[i].gb)%>
+                                </td>
+                                <td>
+                                    <%= (data[i].cajas)%>
+                                </td>
+                                <td>
+                                    <%= (data[i].horae) %>
+                                </td>
+                                <td class="col-mt-2">
+                                    <a style="margin-bottom: 5%; margin-left: 8%;" href="/sorteo/delete/<%= data[i].id%>" class="btn btn-danger">Eliminar</a>
+                                    <a href="/sorteo/update/<%= data[i].id%>" class="btn btn-primary">Actualizar</a>
+                                </td>
+                                
+                            </tr>
+                            
+                            <% }%>
+                    <% }%>
+                </tbody>
+              </table>
+        </div>
+        
+    </div>
+</div>
+
+<%- include("partials/_footer") %>
